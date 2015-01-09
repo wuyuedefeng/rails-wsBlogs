@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nickname: MyString
+  dodo_number: 
+  email: MyString
+  token: MyString
+  account_state: MyString
+
+two:
+  nickname: MyString
+  dodo_number: 
+  email: MyString
+  token: MyString
+  account_state: MyString
