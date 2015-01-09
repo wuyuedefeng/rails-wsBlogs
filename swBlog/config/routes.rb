@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'static/index'
 
-  get 'welcome/index'
+  root 'welcome#index'
+
+  get 'static/index'
 
   resources :users do
     collection do
