@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'static/index'
+  resources :session
 
   resources :users do
     collection do

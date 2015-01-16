@@ -36,6 +36,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#登录
+gem 'authlogic'
+
+
 #备注
 gem 'annotate', github: 'ctran/annotate_models'
 

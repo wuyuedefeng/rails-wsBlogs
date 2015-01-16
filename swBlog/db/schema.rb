@@ -14,13 +14,28 @@
 ActiveRecord::Schema.define(version: 20150109092038) do
 
   create_table "users", force: :cascade do |t|
-    t.string   "nickname",      limit: 30
-    t.string   "dodo_number",   limit: 13,                null: false
-    t.string   "email",         limit: 25,                null: false
-    t.string   "token",         limit: 45,                null: false
-    t.string   "account_state", limit: 10, default: "正常", null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.string   "nickname",            limit: 30
+    t.integer  "account_state",       limit: 4,   default: 0, null: false
+    t.string   "login",               limit: 35,              null: false
+    t.string   "email",               limit: 50,              null: false
+    t.string   "crypted_password",    limit: 255,             null: false
+    t.string   "password_salt",       limit: 255,             null: false
+    t.string   "persistence_token",   limit: 255,             null: false
+    t.string   "single_access_token", limit: 255,             null: false
+    t.string   "perishable_token",    limit: 255,             null: false
+    t.integer  "login_count",         limit: 4,   default: 0, null: false
+    t.integer  "failed_login_count",  limit: 4,   default: 0, null: false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip",    limit: 255
+    t.string   "last_login_ip",       limit: 255
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
+  add_index "users", ["persistence_token"], name: "index_users_on_persistence_token", unique: true, using: :btree
 
 end
