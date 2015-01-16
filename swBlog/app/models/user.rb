@@ -25,8 +25,11 @@
 
 class User < ActiveRecord::Base
 	acts_as_authentic
-	enum account_state: %i(nomal deactivate)
+	def self.find_by_username_or_email(login)
+  		User.find_by_login(login) || User.find_by_email(login)
+	end
 
+	enum account_state: %i(nomal deactivate)
 	def account_state_zh
 		en_to_zh = {
 			"nomal" => "正常",
