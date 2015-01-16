@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email, limit: 25,null: false
       t.string :token, limit: 45,null: false
       t.string :account_state, limit: 10,null: false, default: '正常'
-
       t.timestamps null: false
     end
   end
