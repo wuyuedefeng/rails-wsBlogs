@@ -1,0 +1,16 @@
+/usr/local/Cellar/ruby/2.1.4/bin/ruby -r ./siteconf20150117-1088-ouptvv.rb extconf.rb 
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20150117-1088-cu1ogi/byebug
+installing default byebug libraries

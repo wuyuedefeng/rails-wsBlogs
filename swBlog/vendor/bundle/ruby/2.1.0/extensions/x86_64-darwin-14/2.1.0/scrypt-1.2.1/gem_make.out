@@ -1,0 +1,9 @@
+/usr/local/Cellar/ruby/2.1.4/bin/ruby -rubygems /Users/senwang/Desktop/wsBlogRails/swBlog/vendor/bundle/ruby/2.1.0/gems/rake-10.4.2/bin/rake RUBYARCHDIR=/Users/senwang/Desktop/wsBlogRails/swBlog/vendor/bundle/ruby/2.1.0/extensions/x86_64-darwin-14/2.1.0/scrypt-1.2.1 RUBYLIBDIR=/Users/senwang/Desktop/wsBlogRails/swBlog/vendor/bundle/ruby/2.1.0/extensions/x86_64-darwin-14/2.1.0/scrypt-1.2.1
+mkdir -p x86_64-darwin
+clang -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -msse -msse2 -arch x86_64 -arch i386  -o x86_64-darwin/crypto_scrypt-sse.o -c ./crypto_scrypt-sse.c
+clang -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -msse -msse2 -arch x86_64 -arch i386  -o x86_64-darwin/memlimit.o -c ./memlimit.c
+clang -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -msse -msse2 -arch x86_64 -arch i386  -o x86_64-darwin/scrypt_calibrate.o -c ./scrypt_calibrate.c
+clang -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -msse -msse2 -arch x86_64 -arch i386  -o x86_64-darwin/scrypt_ext.o -c ./scrypt_ext.c
+clang -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -msse -msse2 -arch x86_64 -arch i386  -o x86_64-darwin/scryptenc_cpuperf.o -c ./scryptenc_cpuperf.c
+clang -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -msse -msse2 -arch x86_64 -arch i386  -o x86_64-darwin/sha256.o -c ./sha256.c
+clang -bundle -o x86_64-darwin/libscrypt_ext.bundle x86_64-darwin/crypto_scrypt-sse.o x86_64-darwin/memlimit.o x86_64-darwin/scrypt_calibrate.o x86_64-darwin/scrypt_ext.o x86_64-darwin/scryptenc_cpuperf.o x86_64-darwin/sha256.o -fexceptions -arch x86_64 -arch i386 
