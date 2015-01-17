@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = current_user
   end
 
   #注册
@@ -21,6 +22,21 @@ class UsersController < ApplicationController
       flash[:notice] = "User exists."
       render 'new' 
     end
+  end
+
+  def active?
+    puts 'active================------------------========'
+    @user = User.find_using_perishable_token(params[:perishable_token])
+    if user
+      @user.active = true;
+      @user.reset_perishable_token 
+      @user.save
+      flash[:notice] = 'active successful!'
+      redirect_to root_url
+    else
+
+    end
+    
   end
 
 

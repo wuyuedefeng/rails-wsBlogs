@@ -24,7 +24,9 @@
 #
 
 class User < ActiveRecord::Base
-	acts_as_authentic
+	acts_as_authentic do |config|  
+  		# config.ignore_blank_passwords = true  #密码留空并提交的时候把密码清空
+	end 
 	def self.find_by_username_or_email(login)
   		User.find_by_login(login) || User.find_by_email(login)
 	end
@@ -47,6 +49,12 @@ class User < ActiveRecord::Base
 			"guest"
 		end
 	end
+
+	def deliver_password_reset_instructions!
+    	reset_perishable_token!
+    	Notifier.password_reset_instructions(self)
+  	end
+
 
 
 end

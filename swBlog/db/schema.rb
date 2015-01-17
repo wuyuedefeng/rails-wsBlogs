@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150109092038) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
+  add_index "users", ["perishable_token"], name: "index_users_on_perishable_token", unique: true, using: :btree
   add_index "users", ["persistence_token"], name: "index_users_on_persistence_token", unique: true, using: :btree
 
 end
