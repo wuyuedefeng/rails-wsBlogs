@@ -22,7 +22,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.find  
     @user_session.destroy  
     flash[:notice] = "Successfully logged out."  
-    redirect_to login_path, :format => params[:format]  
+    redirect_to root_path, :format => params[:format]  
   end 
 
   def user_session_params

@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'static/index'
-  resource :user_session
+  resource :user_sessions do
+    match 'login_in', to: 'user_sessions#new', via: [:get]
+    match 'login_out', to: 'user_sessions#destroy', via: [:delete]
+  end
 
   resources :users do
     collection do
