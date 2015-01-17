@@ -60,16 +60,16 @@
       <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li><a href="#"><font color = blue><%= current_user.email %></font></a></li>
+          <li><a href="#"><font color = blue><%= current_user.login_in_nickname_or_others %></font></a></li>
           <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多 <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
             <li><%= link_to '退出', login_out_user_sessions_path, method: :delete, data: { confirm: '确定退出吗?' },
-          class: "btn btn-danger left" %></li>
+          class: "btn" %></li>
         <% else %>
           <li><a href="<%= login_in_user_sessions_path %>"><font color = "#5E5E5E">登录</font></a></li>
           <li><a href="<%= new_user_path %>"><font color ="#5E5E5E">注册</font></a></li>

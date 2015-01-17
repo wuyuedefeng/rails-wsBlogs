@@ -3,15 +3,15 @@
 <ul>  
 <%= form_for @user_session, :url =>  {:action=>'create'} do |f| %>  
       <li>  
-    <%= f.label :login %>  
+    <%= f.label :login,"账号" %>  
     <%= f.text_field :login %>  
       </li>  
       <li>  
-        <%= f.label :password %>  
+        <%= f.label :password,"密码" %>  
         <%= f.password_field :password %>  
       </li>  
       <li>  
-      <%= f.submit :'Login' %>  
+      <%= f.submit :'登录' %>  
       </li>  
 <% end %>  
 </ul>  

@@ -37,4 +37,16 @@ class User < ActiveRecord::Base
 		}
 		en_to_zh[self.account_state]
 	end
+
+	def login_in_nickname_or_others
+		if self.login.present?
+			self.login
+		elsif self.email.present?
+			self.email
+		else
+			"guest"
+		end
+	end
+
+
 end
