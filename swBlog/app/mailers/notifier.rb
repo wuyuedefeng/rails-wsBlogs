@@ -3,7 +3,7 @@ class Notifier < ApplicationMailer
         @user = user
     # @url  = 'http://example.com/login'
       mail(to: @user.email,
-         subject: 'Welcome to My Awesome Site') do |format|
+         subject: '密码重置请求－www.itrydo.com') do |format|
       format.html { render 'password_reset_intructions' }
       format.text { render text: 'Render text' }
     end

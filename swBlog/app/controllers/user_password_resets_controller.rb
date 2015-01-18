@@ -1,4 +1,4 @@
-class PasswordResetsController < ApplicationController
+class UserPasswordResetsController < ApplicationController
   # Method from: http://github.com/binarylogic/authlogic_example/blob/master/app/controllers/application_controller.rb
   before_filter :require_no_user
   before_filter :load_user_using_perishable_token, :only => [ :edit, :update ]

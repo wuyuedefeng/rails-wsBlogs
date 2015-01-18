@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'password_resets/new'
+  get 'user_password_resets/new'
 
   root 'welcome#index'
 
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     match 'login_out', to: 'user_sessions#destroy', via: [:delete]
   end
 
-  resources :password_resets , :only => [ :new, :create, :edit, :update ]
+  resources :user_password_resets , :only => [ :new, :create, :edit, :update ]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
