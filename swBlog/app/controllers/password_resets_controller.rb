@@ -9,10 +9,10 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user
       @user.deliver_password_reset_instructions!
-      flash[:notice] = "Instructions to reset your password have been emailed to you"
+      flash[:alert] = "Instructions to reset your password have been emailed to you"
       redirect_to root_path
     else
-      flash.now[:error] = "No user was found with email address #{params[:email]}"
+      flash.now[:error] = "没有找到该邮箱 #{params[:email]} ,请检查是否输入正确或重新输入"
       render :action => :new
     end
   end
@@ -21,18 +21,26 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    @user.password = params[:password]
-    # Only if your are using password confirmation
-    @user.password_confirmation = params[:password]
+    if params[:password].present? &&  params[:password_confirmation].present?
+      @user.password = params[:password]
+      # Only if your are using password confirmation
+      @user.password_confirmation = params[:password_confirmation]
 
-    # Use @user.save_without_session_maintenance instead if you
-    # don't want the user to be signed in automatically.
-    if @user.save
-      flash[:success] = "Your password was successfully updated"
-      redirect_to @user
+      # Use @user.save_without_session_maintenance instead if you
+      # don't want the user to be signed in automatically.
+      if @user.save
+        flash[:success] = "您的密码成功更新"
+        redirect_to @user
+      else
+        flash[:error] = "两次输入密码不一致，请重新输入"
+        render :action => :edit
+      end
     else
-      render :action => :edit
+        flash[:error] = "密码输入不能为空"
+        render :action => :edit
     end
+
+    
   end
 
 

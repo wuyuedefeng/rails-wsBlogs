@@ -15,11 +15,11 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.new(user_params)
-    if @user.save!
+    if @user.save
       redirect_to root_url, :notice => "Signed up!"
       cookies[:auth_token] = @user.persistence_token
     else
-      flash[:notice] = "User exists."
+      flash[:notice] = "用户已经存在"
       render 'new' 
     end
   end

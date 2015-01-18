@@ -1,5 +1,4 @@
-<h1>Session#new</h1>
-<p>Find me in app/views/session/new.html.erb</p>
+<h1>登录</h1>
 <ul>  
 <%= form_for @user_session, :url =>  {:action=>'create'} do |f| %>  
       <li>  
@@ -11,12 +10,7 @@
         <%= f.password_field :password %>  
       </li>  
       <li>  
-      <%= f.submit :'登录' %>  
+        <%= link_to "重置", password_resets_new_path,class: "btn btn-border" %>
+        <%= f.submit :'登录' %>  
       </li>  
 <% end %>  
-
-<%= form_tag password_resets_path do %>
-<%= text_field_tag :email %>
-<%= submit_tag "Reset Password" %>
-<% end %>
-</ul>  

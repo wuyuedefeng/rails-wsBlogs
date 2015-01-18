@@ -35,6 +35,8 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
+  #主机配置
+  config.action_mailer.default_url_options = { :host => '127.0.0.1:3000' }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
@@ -45,7 +47,7 @@ Rails.application.configure do
     :port           => 25,
     :domain         => "www.163.com",
     :authentication => :login,
-    :user_name      => "wangsen606@163.com",
+    :user_name      => "itrydo@163.com",
     :password       => "taosenxu"
   }
 end

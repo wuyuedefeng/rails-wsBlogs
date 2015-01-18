@@ -1,8 +1,11 @@
-<h1>Update your password</h1>
+<h1>密码重置</h1>
 
-<p>Please enter the new password below and then press "Update Password".</p>
-
+<p>请输入您的新密码.</p>
+<span style = "color:red"><%= flash.now[:error] %></span>
 <%= form_tag password_reset_path, :method => :put do %>
+  <%= label_tag :password,'密码' %>
   <%= password_field_tag :password %>
-  <%= submit_tag "Update Password" %>
+  <%= label_tag :password,'确认密码' %>
+  <%= password_field_tag :password_confirmation %>
+  <%= submit_tag "更新密码" %>
 <% end %>
