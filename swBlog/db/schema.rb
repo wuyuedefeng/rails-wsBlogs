@@ -11,7 +11,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109092038) do
+ActiveRecord::Schema.define(version: 20150118135139) do
+
+  create_table "blogs", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.integer  "category_id", limit: 4
+    t.string   "title",       limit: 255
+    t.string   "tags",        limit: 255
+    t.text     "body",        limit: 65535
+    t.integer  "permission",  limit: 4,     default: 0, null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "blogs", ["category_id"], name: "index_blogs_on_category_id", using: :btree
+  add_index "blogs", ["user_id"], name: "index_blogs_on_user_id", using: :btree
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       limit: 255,             null: false
+    t.integer  "parent_id",  limit: 4,   default: 0, null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "blog_id",    limit: 4
+    t.integer  "user_id",    limit: 4
+    t.string   "content",    limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "comments", ["blog_id"], name: "index_comments_on_blog_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "user_blogs", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "blog_id",    limit: 4
+    t.boolean  "is_visited", limit: 1
+    t.boolean  "is_like",    limit: 1
+    t.boolean  "is_dislike", limit: 1
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "user_blogs", ["blog_id"], name: "index_user_blogs_on_blog_id", using: :btree
+  add_index "user_blogs", ["user_id"], name: "index_user_blogs_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "nickname",            limit: 30
@@ -39,4 +84,10 @@ ActiveRecord::Schema.define(version: 20150109092038) do
   add_index "users", ["perishable_token"], name: "index_users_on_perishable_token", unique: true, using: :btree
   add_index "users", ["persistence_token"], name: "index_users_on_persistence_token", unique: true, using: :btree
 
+  add_foreign_key "blogs", "categories"
+  add_foreign_key "blogs", "users"
+  add_foreign_key "comments", "blogs"
+  add_foreign_key "comments", "users"
+  add_foreign_key "user_blogs", "blogs"
+  add_foreign_key "user_blogs", "users"
 end
