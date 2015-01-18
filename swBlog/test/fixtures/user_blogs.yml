@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: user_blogs
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  blog_id    :integer
+#  is_visited :boolean
+#  is_like    :boolean
+#  is_dislike :boolean
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
