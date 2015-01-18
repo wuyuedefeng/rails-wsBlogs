@@ -79,4 +79,14 @@ Rails.application.configure do
   #主机
   config.action_mailer.default_url_options = { :host => 'blogs.itrydo.com' }
 
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address        => "smtp.163.com",
+    :port           => 25,
+    :domain         => "www.163.com",
+    :authentication => :login,
+    :user_name      => "itrydo_notify@163.com",
+    :password       => "wangsen123"
+  }
+
 end

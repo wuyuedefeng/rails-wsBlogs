@@ -4,8 +4,8 @@
 <span style = "color:red"><%= flash.now[:error] %></span>
 <%= form_tag password_reset_path, :method => :put do %>
   <%= label_tag :password,'密码' %>
-  <%= password_field_tag :password %>
+  <%= password_field_tag :password, nil, placeholder: '请输入新密码' %>
   <%= label_tag :password,'确认密码' %>
-  <%= password_field_tag :password_confirmation %>
+  <%= password_field_tag :password_confirmation, nil, placeholder: '请确认新密码' %>
   <%= submit_tag "更新密码" %>
 <% end %>

@@ -47,7 +47,7 @@ Rails.application.configure do
     :port           => 25,
     :domain         => "www.163.com",
     :authentication => :login,
-    :user_name      => "itrydo@163.com",
-    :password       => "taosenxu"
+    :user_name      => "itrydo_notify@163.com",
+    :password       => "wangsen123"
   }
 end
