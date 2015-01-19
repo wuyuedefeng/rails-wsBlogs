@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   
 
+  get 'categories/index'
+
+  get 'categories/show'
+
+  get 'categories/new'
+
   root 'welcome#index'
   get 'static/index'
 

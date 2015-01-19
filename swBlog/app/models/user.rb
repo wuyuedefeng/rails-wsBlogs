@@ -24,6 +24,10 @@
 #
 
 class User < ActiveRecord::Base
+	has_many :blogs
+	has_many :user_categories
+	has_many :categories, :through => user_categories
+
 	acts_as_authentic do |config|  
   		# config.ignore_blank_passwords = true  #密码留空并提交的时候把密码清空
 	end 
