@@ -1,2 +1,45 @@
-<h1>Blogs#index</h1>
-<p>Find me in app/views/blogs/index.html.erb</p>
+<style type="text/css">
+	.blog_header
+	{
+		height: 80px;
+		background-color: green;
+	}
+	.blog_body
+	{
+		height: 500px;
+	}
+	.blog_body_left
+	{
+		float: left;
+		width: 20%;
+		background-color: white;
+	}
+	.blog_body_right
+	{
+		float: right;
+		width: 80%;
+		background-color: gray;
+	}
+	.blog_body_digest
+	{
+		margin: 20px 15px;
+		height: 80px;
+		background-color: red;
+	}
+</style>
+<div class="blog_header">
+	<h1>Blogs#index</h1>
+	<p>Find me in app/views/blogs/index.html.erb</p>
+</div>
+<div class="blog_body">
+	<div class="blog_body_left">
+		<div style="background-color: #ddd;">导航</div>
+		<div><%= link_to "新增博客",new_blog_path %></div>
+	</div>
+	<div class="blog_body_right">
+		<div class="blog_body_digest">
+
+		</div>
+	</div>
+</div>
+<div class="blog_footer" ></div>
