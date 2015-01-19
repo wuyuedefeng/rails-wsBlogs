@@ -9,7 +9,7 @@ class UserPasswordResetsController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user
       @user.deliver_password_reset_instructions!
-      flash[:alert] = "Instructions to reset your password have been emailed to you"
+      flash[:alert] = "重置密码请求已经发送到您的邮箱"
       redirect_to root_path
     else
       flash.now[:error] = "没有找到该邮箱 #{params[:email]} ,请检查是否输入正确或重新输入"
