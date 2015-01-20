@@ -3,7 +3,7 @@ class CreateUserCategories < ActiveRecord::Migration
     create_table :user_categories do |t|
       t.references :user, index: true
       t.references :category, index: true
-      t.boolean :is_used
+      t.boolean :is_used, default:true
       t.timestamps null: false
     end
     add_foreign_key :user_categories, :users
