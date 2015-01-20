@@ -31,6 +31,9 @@ gem 'authlogic'
 
 #blog编辑插件
 gem 'ckeditor'
+gem 'responders'
+#文件上传
+gem 'paperclip'
 
 #备注
 gem 'annotate', github: 'ctran/annotate_models'

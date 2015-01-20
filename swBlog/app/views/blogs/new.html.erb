@@ -61,7 +61,8 @@
 			<div class="blog_body_content">
 			<li>  
 	        	 <%= f.label :body,"内容" %>  
-	        	 <%= f.text_field :body %>  
+	        	 <%= f.cktext_area :body,:id => 'sometext', :ckeditor => {:language => 'zh-cn'} %>  
+
 	     	 </li>
 			</div>
 			<div class="blog_body_category">
@@ -80,3 +81,5 @@
 	</div>
 </div>
 <div class="blog_footer" ></div>
+
+
