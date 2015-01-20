@@ -1,0 +1,15 @@
+<h1>Admin::Categories#new</h1>
+<p>Find me in app/views/admin/categories/new.html.erb</p>
+<%= form_for(patient,url: categories_path(patient),method: 'post')  do |f| %>
+	<div class="row">
+	  <div class="col-md-6">名称</div>
+	  <div class="col-md-6"><%= f.text_field :name %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-6">所属分类</div>
+	  <div class="col-md-6"><%= f.text_field :parent_id %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-12"><%= f.submit '新增', class: "btn btn-primary",style: "width:100px;" %></div>
+	</div>
+<% end %>
