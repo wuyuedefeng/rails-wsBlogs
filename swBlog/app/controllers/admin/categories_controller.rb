@@ -11,6 +11,7 @@ class Admin::CategoriesController < ApplicationController
   	p '----------'
   	p params
   	category = Category.new(params[:category].symbolize_keys)
+    category.add_this_user_count = 0
   	if category.save
   		redirect_to '/admin/categories'
   	 else 	
@@ -23,4 +24,5 @@ class Admin::CategoriesController < ApplicationController
     category.destroy
     redirect_to action: :index
   end
+
 end
