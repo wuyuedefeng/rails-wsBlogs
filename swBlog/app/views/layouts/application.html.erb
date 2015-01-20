@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>博文天地</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<style type="text/css">
+  .body{
+      margin: 0 auto;
+      width: 100%;
+  }
+  .navbar{
+    margin-bottom: 0px;
+    background-color: #F0F0F0;
+    z-index: 1;
+    border-width: 0px;
+  }
+</style>
+<body>
+<nav class="navbar navbar-default"  role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">揣度网</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <!--<ul class="nav navbar-nav">-->
+        <!--<li class="active"><a href="#">Link</a></li>-->
+        <!--<li><a href="#">Link</a></li>-->
+        <!--<li class="dropdown">-->
+          <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>-->
+          <!--<ul class="dropdown-menu" role="menu">-->
+            <!--<li><a href="#">Action</a></li>-->
+            <!--<li><a href="#">Another action</a></li>-->
+            <!--<li><a href="#">Something else here</a></li>-->
+            <!--<li class="divider"></li>-->
+            <!--<li><a href="#">Separated link</a></li>-->
+            <!--<li class="divider"></li>-->
+            <!--<li><a href="#">One more separated link</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
+      <!--</ul>-->
+      <% if current_user %>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="个人博客搜索">
+          </div>
+          <button type="submit" class="btn btn-default">搜索</button>
+        </form>
+      <% end %>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li><a href="<%= users_path %>"><font color = blue><%= current_user.login_in_nickname_or_others %></font></a></li>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多 <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><%= link_to '退出', login_out_user_sessions_path, method: :delete, data: { confirm: '确定退出吗?' },
+          class: "btn" %></li>
+        <% else %>
+          <li><a href="<%= login_in_user_sessions_path %>"><font color = "#5E5E5E">登录</font></a></li>
+          <li><a href="<%= new_user_path %>"><font color ="#5E5E5E">注册</font></a></li>
+        <% end %>
+        
+        
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="body" style= "width:90%; align:center;background-color:#eee">
+  <%= yield %>
+</div>
+
+</body>
+</html>

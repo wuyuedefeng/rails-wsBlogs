@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: blogs
+#
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  category_id :integer
+#  title       :string(255)
+#  tags        :string(255)
+#  body        :text(65535)
+#  permission  :integer          default("0"), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  category_id: 1
+  title: MyString
+  tags: MyString
+  body: MyText
+  permission: 1
+  visited_count: 1
+  like: false
+  dislike: false
+
+two:
+  user_id: 1
+  category_id: 1
+  title: MyString
+  tags: MyString
+  body: MyText
+  permission: 1
+  visited_count: 1
+  like: false
+  dislike: false

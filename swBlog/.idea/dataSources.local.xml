@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails swBlog: development" uuid="9120af60-38fd-4ba9-af09-f07b82b9a21c">
+      <user-name>root</user-name>
+      <user-password>dfd8dfc5dfc5dfde</user-password>
+    </data-source>
+    <data-source name="Rails swBlog: test" uuid="1e7e898a-2e3b-456e-ad65-24440e74b529">
+      <user-name>root</user-name>
+      <user-password>dfd8dfc5dfc5dfde</user-password>
+    </data-source>
+    <data-source name="Rails swBlog: production" uuid="e38f44e7-2904-4bde-ae48-cdcab157c038">
+      <user-name>root</user-name>
+      <user-password>dfd8dfc5dfc5dfde</user-password>
+    </data-source>
+  </component>
+</project>

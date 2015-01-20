@@ -1,0 +1,25 @@
+<h1>注册</h1>
+<%= form_for @user, :url => {:action=>'create'} do |form| %>  
+<ul class="formList">  
+  <li>  
+    <%= form.label :login, "用户名" %>  
+    <%= form.text_field :login %>  
+  </li>  
+  <li>  
+    <%= form.label :email, "邮箱" %>  
+    <%= form.text_field :email %>  
+  </li>  
+  <li>  
+    <%= form.label :password, "密码" %>  
+    <%= form.password_field :password %>  
+  </li>  
+  <li>  
+    <%= form.label :password_confirmation, "确认密码" %>  
+    <%= form.password_field :password_confirmation %>   
+  </li> 
+  <li>  
+    <%= form.submit "注册" %>  
+  </li>  
+</ul>  
+<% end %>  
+

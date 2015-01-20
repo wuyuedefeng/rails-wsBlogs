@@ -1,0 +1,6 @@
+<h1>忘记密码</h1>
+<span style = "color:red"><%= flash.now[:error] %></span>
+<%= form_tag user_password_resets_path do %>
+  <%= text_field_tag :email, nil, placeholder: '请输入您注册的邮箱' %>
+  <%= submit_tag "找回密码" %>
+<% end %>
