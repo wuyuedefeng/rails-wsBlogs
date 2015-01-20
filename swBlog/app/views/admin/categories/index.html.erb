@@ -1,0 +1,58 @@
+<style type="text/css">
+  
+
+</style>
+
+<div style ="height:50px">
+	<div style = "float: left; height: 0px; padding: 0px;">
+	  <h3 style = "margin-top: 15px">分类列表<span style = "font-size:17px; color:blue"> 查询到患者数(<%= @categories.try(:count) %>)</span><%= link_to '新增', new_admin_category_path,class:  "btn btn-primary" %></h3>
+	  
+	</div>
+
+	<div style= "float: right">
+	    <div style = "float: right">
+	      <form action= "<%= admin_categories_path %>" class="navbar-form navbar-right" role="search">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder= "姓名/手机号" value = "<%= params[:category_search_text] %>" name="category_search_text">
+	        </div>
+	        <button type="submit" class="btn btn-default">搜索</button>
+	      </form>
+	    </div>
+	</div>
+</div>
+<div>
+<%= paginate @categories %>
+<table class="table table-bordered table-hover valign">
+  <thead>
+      <tr>
+        <th>id</th>
+        <th>名称</th>
+        <th>父类ID</th>
+        <th>created_at</th>
+        <th>update_at</th>
+        <th>操作</th>
+      </tr>
+  </thead>
+  <tbody>
+      <% @categories.each_with_index do |category,index| %>
+	      <tr>
+	        <td><%= category.id %></td>
+	        <td><%= category.name %></td>
+	        <td><%= category.parent_id %></td>
+	        <td><%= category.created_at %></td>
+	        <td><%= category.updated_at %></td>
+	        <td>
+	        	<%= link_to '删除', admin_category_path(category), method: :delete, data: { confirm: '确定删除吗?' },
+            class: "btn btn-danger left" %>
+	        </td>
+      <% end %>
+  </tbody>
+</table>
+<%= paginate @categories %>
+
+</div>
+
+
+
+
+

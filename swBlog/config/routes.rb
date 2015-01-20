@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
 
-  
+  namespace :admin do
+    resources :categories
+  end
 
-  get 'categories/index'
-
-  get 'categories/show'
-
-  get 'categories/new'
+  mount Ckeditor::Engine => '/ckeditor'
 
   root 'welcome#index'
   get 'static/index'
@@ -24,7 +22,11 @@ Rails.application.routes.draw do
   get 'user_password_resets/new'
   resources :user_password_resets , :only => [ :new, :create, :edit, :update ]
 
+  resources :categories
+  
   resources :blogs
+
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
