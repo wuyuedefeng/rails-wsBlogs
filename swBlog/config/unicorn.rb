@@ -5,7 +5,7 @@ APP_PATH = File.expand_path("../..", __FILE__)
 working_directory APP_PATH
 
 listen 8080, :tcp_nopush => true
-listen "/tmp/unicorn.sock", :backlog => 64
+listen APP_PATH+"/tmp/unicorn.sock", :backlog => 64
 
 timeout 30
 
