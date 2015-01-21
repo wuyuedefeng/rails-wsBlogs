@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     resources :categories
   end
 
-  mount Ckeditor::Engine => '/ckeditor'
 
   root 'welcome#index'
   get 'static/index'
