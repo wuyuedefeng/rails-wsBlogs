@@ -27,5 +27,5 @@ test:
 
 production:
   <<: *default
-  password: root
+  password: 123
   database: db/blog_production
