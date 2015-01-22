@@ -1,24 +1,23 @@
 worker_processes 2
-working_directory "/home/wangsen/project/wsBlogRails/swBlog"
- 
-# This loads the application in the master process before forking
-# worker processes
-# Read more about it here:
-# http://unicorn.bogomips.org/Unicorn/Configurator.html
+
 preload_app true
- 
-timeout 30
- 
-# This is where we specify the socket.
-# We will point the upstream Nginx module to this socket later on
-listen working_directory + "/tmp/sockets/unicorn.sock", :backlog => 64
- 
-pid working_directory + "/tmp/pids/unicorn.pid"
- 
-# Set the path of the log files inside the log folder of the testapp
-stderr_path working_directory + "/log/unicorn.stderr.log"
-stdout_path working_directory + "/log/unicorn.stdout.log"
- 
+
+timeout 60
+
+APP_PATH = File.expand_path("../..", __FILE__)
+working_directory APP_PATH
+
+listen 8080, :tcp_nopush => true
+listen APP_PATH+"/tmp/unicorn.sock", :backlog => 64
+pid    APP_PATH+"/tmp/pids/unicorn.pid"
+
+
+stderr_path APP_PATH + "/log/unicorn.stderr.log"
+stdout_path APP_PATH + "/log/unicorn.stderr.log"
+
+
+pid APP_PATH + "/tmp/pids/unicorn.pid"
+
 before_fork do |server, worker|
 # This option works in together with preload_app true setting
 # What is does is prevent the master process from holding
