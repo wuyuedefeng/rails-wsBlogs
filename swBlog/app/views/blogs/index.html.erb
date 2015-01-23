@@ -1,7 +1,7 @@
 <style type="text/css">
 	.blog_header
 	{
-		height: 80px;
+		height: 90px;
 		background-color: green;
 	}
 	.blog_body
@@ -24,7 +24,25 @@
 	{
 		margin: 20px 15px;
 		height: 80px;
-		background-color: red;
+		margin: 5px 5px;
+		background-color: white;
+	}
+	.blog_title{
+		font-size: 20px;
+		color: black;
+		height: 30;
+		margin: 2px 10px;
+		background-color: orange
+	}
+	.blog_tags{
+		height: 25px;
+		margin: 2px 10px;
+		background-color: blue;
+	}
+	.blog_body{
+		height: 25px;
+		margin: 2px 10px;
+		background-color: green;
 	}
 </style>
 <div class="blog_header">
@@ -35,11 +53,25 @@
 	<div class="blog_body_left">
 		<div style="background-color: #ddd;">导航</div>
 		<div><%= link_to "新增博客",new_blog_path %></div>
+		<div><%= link_to "选择语言",user_categories_path %></div>
 	</div>
+	<%= paginate @blogs %>
 	<div class="blog_body_right">
-		<div class="blog_body_digest">
+		<% @blogs.each do |blog|  %>
+			<div class="blog_body_digest">
+				<!-- <font style="font-size:20px;text-align:center;display:block">title:</font>
+				<div>
+					tags: %>
+					<div></div>
+				</div> -->
+				<div class="blog_title"><%= link_to blog.title,blog_path(blog) %></div>
+				<div class="blog_tags"><%= blog.tags</div>
+				<div class="blog_body"><%= raw blog.body %></div>
+			</div>
+			
 
-		</div>
+		<% end %>
 	</div>
+	<%= paginate @blogs %>
 </div>
 <div class="blog_footer" ></div>

@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   def index
+    @blogs = current_user.blogs.order("created_at desc").page(params[:page])
   end
 
   def new
@@ -14,9 +15,10 @@ class BlogsController < ApplicationController
 
   def create
   	blog = Blog.new(blog_params)
+    blog.user_id = current_user.id
     if blog.save
       flash[:notice] = "新增成功"
-      render :action => :index
+      redirect_to action: :index
     else
       render json: {txt: "新增失败"} 
     end
