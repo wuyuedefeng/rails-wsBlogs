@@ -1,2 +1,34 @@
-<h1>Blogs#show</h1>
-<p>Find me in app/views/blogs/show.html.erb</p>
+<style type="text/css">
+ 	h2{
+ 		text-align: center;
+ 	}
+ 	h5{
+ 		color: gray;
+ 	}
+ 	.category_evaluate_div{
+ 		float: none;
+ 	}
+ 	.category_div{
+ 		float: left;
+ 	}
+ 	.evaluate_div{
+ 		text-align: left;
+ 		float: right;
+ 	}
+ 	.tags_div{
+ 		display: absolute;
+ 		float: none;
+ 	}
+</style>
+<h2><%= @blog.title %></h2>
+<div class="category_evaluate_div">
+	<div class="category_div"><span>分类： <span style="color:orange"><%= @blog.category.name %></span></span></div>
+	<div class="evaluate_div">赞: <br/>踩:</div>
+</div>
+<br />
+<div class="tags_div">
+	<h5><span style="color:#d2d2d2">tags:</span> <%= @blog.tags %></h5>
+</div>
+
+<hr />
+<p><%= sanitize @blog.body %></p>
