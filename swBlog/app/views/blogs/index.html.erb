@@ -66,7 +66,9 @@
 					tags: %>
 					<div></div>
 				</div> -->
-				<div class="blog_title"><%= link_to blog.title,blog_path(blog) %></div>
+				<div class="blog_title">
+					<div><%= link_to blog.title,blog_path(blog) %></div>
+				</div>
 				<div class="blog_tags"><%= blog.tags %></div>
                 <% one_blog_body = sanitize strip_tags(blog.body) %>
 				<div class="blog_body"><%= one_blog_body.length<300 ? one_blog_body : one_blog_body[0,299]   %></div>
