@@ -61,7 +61,8 @@
 			<div class="blog_body_content" data-no-turbolink>
 			<li>  
 	        	 <%= f.label :body,"内容" %>  
-	        	 <%= f.text_area :body, :class => 'ckeditor' %>
+	        	 <!-- <%= f.text_area :body, :class => 'ckeditor' %> -->
+	        	 <%= f.cktext_area :body, :class => 'someclass', :ckeditor => {:language => 'zh-ch'} %>
 
 	     	 </li>
 			</div>
