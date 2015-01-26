@@ -17,6 +17,9 @@
     z-index: 1;
     border-width: 0px;
   }
+  .footer{
+    clear: both;
+  }
 </style>
 <body>
 <nav class="navbar navbar-default"  role="navigation">
@@ -85,6 +88,17 @@
 <div class="body" style= "width:90%; align:center;background-color:#fff">
   <%= yield %>
 </div>
+
+<footer class="footer">
+      <div class="container">
+        <hr>
+        <div class="row footer-bottom">
+          <ul class="list-inline text-center">
+            <li><a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备15002863号</a></li><li></li>
+          </ul>
+        </div>
+      </div>
+</footer>
 
 </body>
 </html>
