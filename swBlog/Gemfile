@@ -30,7 +30,7 @@ gem 'unicorn'
 gem 'authlogic'
 
 #blog编辑插件
-gem 'ckeditor_rails'
+gem 'ckeditor'
 gem 'responders'
 #文件上传
 gem 'paperclip'

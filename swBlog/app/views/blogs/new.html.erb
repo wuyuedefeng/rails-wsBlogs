@@ -27,8 +27,8 @@
 	}
 	.blog_body_new .blog_body_add_title
 	{
-		height: 100px;
-		background-color: #eee;
+		height: 60px;
+		background-color: red;
 	}
 	.blog_body_new .blog_body_category
 	{
@@ -41,13 +41,13 @@
 	<h1>Blogs#index</h1>
 	<p>Find me in app/views/blogs/index.html.erb</p>
 </div>
-<div class="blog_body">
+<div class="blog_body" data-no-turbolink>
 	<div class="blog_body_left">
 		<div style="background-color: #ddd;">分类</div>
 	</div>
 	<div class="blog_body_right">
 		<%= form_for @blog, :url =>  {:action=>'create'} do |f| %> 
-		<div class="blog_body_new">
+		<div class="blog_body_new" data-no-turbolink>
 			<div class="blog_body_add_title">
 				<li>  
 	    	 		<%= f.label :title,"标题" %>  
@@ -58,17 +58,21 @@
 	   		 		<%= f.text_field :"tags" %>  
 	      		</li>
 			</div>
-			<div class="blog_body_content">
+			<div class="blog_body_content" data-no-turbolink>
 			<li>  
 	        	 <%= f.label :body,"内容" %>  
-	        	 <%= f.text_area :body, :class => 'ckeditor' %>
+	        	 <!-- <%= f.text_area :body, :class => 'ckeditor' %> -->
+	        	 <%= f.cktext_area :body, :class => 'someclass', :ckeditor => {:language => 'zh-cn',height:300} %>
 
 	     	 </li>
 			</div>
 			<div class="blog_body_category">
 				<li>
-					<%= f.label :category_id,"分类" %>  
-		        	<%= f.text_field :category_id %> 
+					<%= f.label :category_id,"选择分类:" %>  
+		        	<% current_user.categories.each do |category|  %>
+		        		<%= f.radio_button(:category_id, category.id) %>
+						<%= f.label(:category_id, category.name) %>
+		        	<% end %>
 				</li>
 			</div>  
 				<div>
