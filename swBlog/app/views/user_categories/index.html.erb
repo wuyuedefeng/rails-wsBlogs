@@ -33,12 +33,13 @@
 	      <tr>
 	        <td><%= category.name %></td>
 	        <td>
-	        	<% if !(@user_category_ids.empty?) && @user_category_ids.include?(category.id) %>
+	        	<% if (@user_category_ids.present?) && @user_category_ids.include?(category.id) %>
 	        		<%= link_to '点击取消',user_category_path(category[:id]), method: :put%>
 	        	<% else %>
 	        		<%= link_to '点击选中', user_category_path(category[:id]),method: :put %>
 	        	<% end %>
 	        </td>
+	     </tr>
       <% end %>
   </tbody>
 </table>
