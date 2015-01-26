@@ -24,6 +24,7 @@
 <table class="table table-bordered table-hover valign">
   <thead>
       <tr>
+      	<th>ID</th>
         <th>名称</th>
         <th>操作</th>
       </tr>
@@ -31,6 +32,7 @@
   <tbody>
       <% @categories.each_with_index do |category,index| %>
 	      <tr>
+	      	<td><%= category.id %></td>
 	        <td><%= category.name %></td>
 	        <td>
 	        	<% if (@user_category_ids.present?) && @user_category_ids.include?(category.id) %>
