@@ -28,11 +28,11 @@ ActiveRecord::Schema.define(version: 20150124103145) do
   add_index "blogs", ["user_id"], name: "index_blogs_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name",       limit: 255,             null: false
-    t.integer  "parent_id",  limit: 4,   default: 0, null: false
-    t.integer  "add_this_user_count",  limit: 4,   default: 0, null: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.string   "name",                limit: 255,             null: false
+    t.integer  "parent_id",           limit: 4,   default: 0, null: false
+    t.integer  "add_this_user_count", limit: 4,   default: 0, null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(version: 20150124103145) do
   create_table "user_categories", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
     t.integer  "category_id", limit: 4
-    t.boolean  "is_used", limit: 1, default: 0, null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.boolean  "is_used",     limit: 1, default: false, null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   add_index "user_categories", ["category_id"], name: "index_user_categories_on_category_id", using: :btree

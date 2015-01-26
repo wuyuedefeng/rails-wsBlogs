@@ -16,8 +16,8 @@ class UserCategory < ActiveRecord::Base
 
   scope :used, -> { where(:is_used => true) }
 
-  def self.user_category_ids user_categories
-  	user_categories.map { |e|  e.id}
+  def self.user_category_category_ids user_categories
+  	user_categories.map { |e|  e.category_id}
   end
 
 
