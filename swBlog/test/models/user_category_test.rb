@@ -5,7 +5,7 @@
 #  id          :integer          not null, primary key
 #  user_id     :integer
 #  category_id :integer
-#  is_used     :boolean
+#  is_used     :boolean          default("0"), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
