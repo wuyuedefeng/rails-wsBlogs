@@ -13,14 +13,9 @@ class UserCategoriesController < ApplicationController
     p params[:id]
     category = Category.find(params[:id])
     if user_category.present?
-      user_category.is_used = (user_category.is_used? ? false : true)
-      if user_category.is_used?
-        category.add_this_user_count += 1
-      else
+        user_category.destroy
         category.add_this_user_count -= 1
-      end
-      category.save
-      user_category.save
+        category.save
   	else
   	 	user_category = UserCategory.new
   	 	user_category.user_id = current_user.id
