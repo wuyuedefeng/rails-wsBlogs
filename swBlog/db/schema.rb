@@ -121,3 +121,4 @@ ActiveRecord::Schema.define(version: 20150124103145) do
   add_foreign_key "user_categories", "categories"
   add_foreign_key "user_categories", "users"
 end
+
