@@ -20,6 +20,8 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find(params[:id])
+    @is_like_count = UserBlog.where("blog_id = ? and is_like = ?",@blog.id,true).count
+    @is_dislike_count = UserBlog.where("blog_id = ? and is_dislike = ?",@blog.id,true).count
   end
 
   def edit
