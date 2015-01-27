@@ -1,4 +1,5 @@
 class UserBlogsController < ApplicationController
+  before_action :is_login
   def index
   end
 

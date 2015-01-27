@@ -46,4 +46,11 @@ class ApplicationController < ActionController::Base
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end
+
+    private
+      def is_login
+        if current_user.blank?
+          redirect_to login_in_user_sessions_path
+        end
+      end
 end

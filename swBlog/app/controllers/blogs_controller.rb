@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_action :is_login, except: [:show, :index]
   def index
     if params[:all_blog_search_text].present?
       @blogs = Blog.where("title LIKE ? or tags LIKE ?",
@@ -40,7 +41,7 @@ class BlogsController < ApplicationController
   end
 
   private 
-  def blog_params
-    params.require(:blog).permit(:title, :tags, :body, :category_id)
-  end
+    def blog_params
+      params.require(:blog).permit(:title, :tags, :body, :category_id)
+    end
 end
