@@ -29,8 +29,8 @@
 	}
 	.search_input{
 		border: 0;
-		height: 30px;
-		width: 200px;
+		height: 35px;
+		width: 300px;
 		line-height: 30px;
 		
 		
@@ -43,8 +43,8 @@
 		background-size: 100%;
 		background-repeat: no-repeat;
 		background-position: center;
-		width: 30px;
-		height: 30px;
+		width: 35px;
+		height: 35px;
 		float: left;
 	}
 </style>
@@ -52,9 +52,9 @@
 <body>
 	<div class="search-all-div">
 		<div class="search_icon"></div>
-		<form>
-			<input type="text" class="search_input"/>
-			<input type="submit" value="" placehole="全局搜索" class="search_commit"/> 
+		<form action="<%= blogs_path %>" role="search">
+			<input type="text" class="search_input"  value="" placehold="全网站搜索" name="all_blog_search_text">
+			<input type="submit" value="" placehole="全局搜索" class="search_commit"> 
 		</form>
 	</div>
 </body>

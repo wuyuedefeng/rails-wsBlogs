@@ -1,6 +1,17 @@
 class BlogsController < ApplicationController
   def index
-    @blogs = current_user.blogs.order("created_at desc").page(params[:page])
+    if params[:all_blog_search_text].present?
+      @blogs = Blog.where("title LIKE ? or tags LIKE ?",
+        params[:all_blog_search_text],params[:all_blog_search_text]).
+        order("created_at desc").page(params[:page])
+    elsif params[:my_blog_search_text].present?
+      @blogs = Blog.where("user_id = ? and (title LIKE ? or tags LIKE ?)",
+        current_user.id,params[:my_blog_search_text],params[:my_blog_search_text]).
+        order("created_at desc").page(params[:page])
+    else
+      @blogs = current_user.blogs.order("created_at desc").page(params[:page])
+    end
+    
   end
 
   def new
