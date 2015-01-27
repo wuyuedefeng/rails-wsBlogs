@@ -1,3 +1,5 @@
 <h1>我的主页</h1>
+<div><h3>欢迎您，<%= current_user.login_in_nickname_or_others %></h3></div>
+<div>注册日期：<%= current_user.created_at.strftime("%Y年%M月%d日") %></div>
 <p>Find me in app/views/user/index.html.erb</p>
 <%= link_to "我的博客",blogs_path %>
