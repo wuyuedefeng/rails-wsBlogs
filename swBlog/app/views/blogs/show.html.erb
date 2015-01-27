@@ -20,7 +20,7 @@
  		float: none;
  	}
 </style>
-<h2><%= @blog.title %><sup style="font-size:14px;color:orange;">----<%= link_to @blog.category.name %></sup></h2>
+<h2><%= @blog.title %><sup style="font-size:14px;color:orange;">----<%= @blog.category.name %></sup></h2>
 <div class="category_evaluate_div">
 	<div class="category_div"><span>作者： <span style="color:orange"><%= @blog.user.login_in_nickname_or_others %></span></span></div>
 	<div class="evaluate_div">
