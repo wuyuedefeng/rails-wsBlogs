@@ -19,6 +19,26 @@
   }
   .footer{
     clear: both;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .footer .container{
+    /*height: 35px;*/
+    /*background-color: #333;*/
+    z-index: 9;
+    width: 100%;
+    position: relative;
+    border: 0px none;
+    padding: 0px;
+    margin-bottom: 0px;
+  }
+  .footer .info {
+    color: #666;
+    line-height: 24px;
+    text-align: center;
+    padding: 12px 0px;
+    margin-top: 15px;
+    border-top: 1px solid #DBE7ED;
   }
 </style>
 <body>
@@ -91,7 +111,14 @@
 
 <footer class="footer">
       <div class="container">
-        <hr>
+        <div class="info">
+            <a href="#" target="_blank">关于网站</a>|<a href="#" target="_blank">联系我</a> |  
+            <a href="#" target="_blank">版权声明</a> |  
+            <br>
+            本站部分文章、资源来自互联网，版权归原作者及网站所有，如果侵犯了您的权利，请及时致信告知我站.<br>
+            版权声明：凡文章来源注明为本站的文章、图片、视频等信息，请在转载时保留本站链接。<br>
+            © 2014-2015 <strong><a href="#">王森个人网站</a> </strong>
+        </div>
         <div class="row footer-bottom">
           <ul class="list-inline text-center">
             <li><a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备15002863号</a></li><li></li>
