@@ -18,7 +18,6 @@ class UserCategoriesController < ApplicationController
   	 	user_category = UserCategory.new
   	 	user_category.user_id = current_user.id
   	 	user_category.category_id = params[:id]
-  	 	user_category.is_used = true;
       category.add_this_user_count += 1
       category.save
   	 	user_category.save
