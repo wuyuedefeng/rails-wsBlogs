@@ -1,9 +1,7 @@
 class UserCategoriesController < ApplicationController
   def index
   	@categories = Category.all.order("add_this_user_count desc").page(params[:page])
-  	@user_category_category_ids = UserCategory.user_category_category_ids UserCategory.where("user_id = ? and is_used = ?",current_user.id,true)
-  	p '000000000'
-  	p @user_category_ids
+  	@user_category_category_ids = UserCategory.user_category_category_ids UserCategory.where("user_id = ?",current_user.id)
   end
 
   def update

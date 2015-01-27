@@ -14,8 +14,6 @@ class UserCategory < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
 
-  scope :used, -> { where(:is_used => true) }
-
   def self.user_category_category_ids user_categories
   	user_categories.map { |e|  e.category_id}
   end
