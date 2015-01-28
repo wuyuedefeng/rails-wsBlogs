@@ -21,4 +21,6 @@ class Blog < ActiveRecord::Base
 	validates :body, presence: true
 	validates :category_id, presence: true
 
+	paginates_per 10
+
 end
