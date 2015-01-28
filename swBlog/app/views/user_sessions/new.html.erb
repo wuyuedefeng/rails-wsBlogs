@@ -1,16 +1,44 @@
-<h1>登录</h1>
-<ul>  
-<%= form_for @user_session, :url =>  {:action=>'create'} do |f| %>  
-      <li>  
-    <%= f.label :login,"账号" %>  
-    <%= f.text_field :login %>  
-      </li>  
-      <li>  
-        <%= f.label :password,"密码" %>  
-        <%= f.password_field :password %>  
-      </li>  
-      <li>  
-        <%= link_to "忘记密码", new_user_password_reset_path,class: "btn btn-border" %>
-        <%= f.submit :'登录' %>  
-      </li>  
-<% end %>  
+<style type="text/css">
+        div{
+          margin: 0 auto;
+          text-align: center;
+        }
+        div h1{
+          text-align: center;
+        }
+        .show-grid{
+          width:400px;
+        }
+        .show-grid [class ^="col-"] {
+            padding-top: 5px;
+            padding-bottom: 1px;
+            height: 40px;
+            text-align: right;
+        }
+        .row {
+            font-size: 15px;
+            padding: 3px;
+        }
+        .btn{
+          margin-left: 40px;
+        }
+</style>
+<div class="show-grid">
+  <h1>登录</h1>
+  <%= form_for @user_session, :url =>  {:action=>'create'} do |f| %>  
+    <div class="row">
+      <div class="col-md-3"> <%= f.label :login,"账号" %></div>
+      <div class="col-md-6"> <%= f.text_field :login %>   </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"><%= f.label :password,"密码" %>  </div>
+      <div class="col-md-6"><%= f.password_field :password %> </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8"><%= link_to "忘记密码", new_user_password_reset_path,class: "btn btn-border" %>
+        <%= f.submit :'登录',class: "btn btn-default" %>
+      </div>
+    </div>
+  <% end %>  
+</div>
+

@@ -1,25 +1,48 @@
-<h1>注册</h1>
-<%= form_for @user, :url => {:action=>'create'} do |form| %>  
-<ul class="formList">  
-  <li>  
-    <%= form.label :login, "用户名" %>  
-    <%= form.text_field :login %>  
-  </li>  
-  <li>  
-    <%= form.label :email, "邮箱" %>  
-    <%= form.text_field :email %>  
-  </li>  
-  <li>  
-    <%= form.label :password, "密码" %>  
-    <%= form.password_field :password %>  
-  </li>  
-  <li>  
-    <%= form.label :password_confirmation, "确认密码" %>  
-    <%= form.password_field :password_confirmation %>   
-  </li> 
-  <li>  
-    <%= form.submit "注册" %>  
-  </li>  
-</ul>  
+<style type="text/css">
+        div{
+          margin: 0 auto;
+          text-align: center;
+        }
+        div h1{
+          text-align: center;
+        }
+        .show-grid{
+          width:400px;
+        }
+        .show-grid [class ^="col-"] {
+            padding-top: 5px;
+            padding-bottom: 1px;
+            height: 40px;
+            text-align: right;
+        }
+        .row {
+            font-size: 15px;
+            padding: 3px;
+        }
+</style>
+<div class="show-grid">
+  <h1>注册</h1>
+  <%= form_for @user, :url => {:action=>'create'} do |form| %>  
+  <div class="row">
+    <div class="col-md-3"><%= form.label :login, "用户名:" %></div>
+    <div class="col-md-6"><%= form.text_field :login %> </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3"><%= form.label :email, "邮箱:" %></div>
+    <div class="col-md-6"><%= form.text_field :email %> </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3"><%= form.label :password, "密码:" %></div>
+    <div class="col-md-6"><%= form.password_field :password %></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3"><%= form.label :password_confirmation, "确认密码:" %> </div>
+    <div class="col-md-6"><%= form.password_field :password_confirmation %> </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6"><%= form.submit "点击注册",class: "btn btn-default" %></div>
+  </div> 
 <% end %>  
+</div>
+
 
