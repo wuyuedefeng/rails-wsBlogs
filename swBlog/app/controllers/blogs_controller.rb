@@ -16,7 +16,11 @@ class BlogsController < ApplicationController
   end
 
   def new
-  	@blog = Blog.new
+    if current_user.categories.present?
+      @blog = Blog.new
+    else
+      redirect_to user_categories_path
+    end
   end
 
   def show
