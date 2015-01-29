@@ -6,15 +6,15 @@ class BlogsController < ApplicationController
       if params[:all_blog_search_text].split(' ').count > 1
         query = params[:all_blog_search_text].split(' ').join('%')
       end
-      @blogs = Blog.where("lower(title) LIKE ? or lower(tags) LIKE ?","%#{lower(query)}%","%#{lower(query)}%")
+      @blogs = Blog.where("lower(title) LIKE lower(?) or lower(tags) LIKE lower(?)","%#{query}%","%#{query}%")
       .order("created_at desc").page(params[:page])
     elsif params[:my_blog_search_text].present?
       query = params[:my_blog_search_text]
       if params[:my_blog_search_text].split(' ').count > 1
         query = params[:my_blog_search_text].split(' ').join('%')
       end
-      @blogs = Blog.where("user_id = ? and (lower(title) LIKE ? or lower(tags) LIKE ?)",
-        current_user.id,"%#{lower(query)}%","%#{lower(query)}%").order("created_at desc").page(params[:page])
+      @blogs = Blog.where("user_id = lower(?) and (lower(title) LIKE lower(?) or lower(tags) LIKE ?)",
+        current_user.id,"%#{query}%","%#{query}%").order("created_at desc").page(params[:page])
     else
       @blogs = current_user.blogs.order("created_at desc").page(params[:page])
     end
