@@ -1,2 +1,72 @@
-<h1>Blogs#edit</h1>
-<p>Find me in app/views/blogs/edit.html.erb</p>
+
+<style type="text/css">
+	.blog_header
+	{
+		height: 80px;
+		background-color: green;
+	}
+	.blog_body
+	{
+		height: 1000px;
+		width: 80%;
+		background-color: gray;
+	}
+	.blog_body_new
+	{
+		margin: 20px 15px;
+		background-color: red;
+	}
+	.blog_body_new .blog_body_add_title
+	{
+		height: 60px;
+		background-color: red;
+	}
+	.blog_body_new .blog_body_category
+	{
+		height: 150px;
+		background-color: #bbb;
+	}
+
+</style>
+<div class="blog_header">
+	<h1>Blogs#edit</h1>
+	<p>Find me in app/views/blogs/edit.html.erb</p>
+</div>
+<div class="blog_body" data-no-turbolink>
+		<%= form_for(@blog, url: blog_path(@blog, page:params[:page]), method: "put" )  do |f| %>
+			<div class="blog_body_new" data-no-turbolink>
+				<div class="blog_body_add_title">
+					<li>  
+		    	 		<%= f.label :title,"标题" %>  
+		   		 		<%= f.text_field :"title" %>  
+		      		</li>
+		      		<li>  
+		    	 		<%= f.label :tags,"tags" %>  
+		   		 		<%= f.text_field :"tags" %>  
+		      		</li>
+				</div>
+				<div class="blog_body_content" data-no-turbolink>
+				<li>  
+		        	 <%= f.label :body,"内容" %>  
+		        	 <!-- <%= f.text_area :body, :class => 'ckeditor' %> -->
+		        	 <%= f.cktext_area :body, :class => 'someclass', :ckeditor => {:language => 'zh-cn',height:300} %>
+
+		     	 </li>
+				</div>
+				<div class="blog_body_category">
+					<li>
+						<%= f.label :category_id,"选择分类:" %>  
+			        	<% current_user.categories.each do |category|  %>
+			        		<%= f.radio_button(:category_id, category.id) %>
+							<%= f.label(:category_id, category.name) %>
+			        	<% end %>
+					</li>
+				</div>  
+					<div>
+						<li>  
+					 <%= f.submit :'发布' %>  
+					</li>
+				</div>
+			</div>
+		<% end %> 
+</div>

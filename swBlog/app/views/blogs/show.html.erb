@@ -41,3 +41,9 @@
 
 <hr />
 <p><%= sanitize @blog.body %></p>
+<hr />
+<div style="margin-top: 50px;">
+	<% if @blog.user_id == current_user.id %>
+		<%= link_to '编辑',edit_blog_path(@blog), class:"btn btn-defalut" %>
+	<% end %>
+</div>

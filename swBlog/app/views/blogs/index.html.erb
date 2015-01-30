@@ -60,11 +60,6 @@
 	<div class="blog_body_right">
 		<% @blogs.each do |blog|  %>
 			<div class="blog_body_digest">
-				<!-- <font style="font-size:20px;text-align:center;display:block">title:</font>
-				<div>
-					tags: %>
-					<div></div>
-				</div> -->
 				<div class="blog_title">
 					<div><%= link_to blog.title,blog_path(blog) %><sup style="color:orange;">----<%= blog.category.name %></sup>
 					</div>

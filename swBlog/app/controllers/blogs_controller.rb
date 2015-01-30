@@ -36,6 +36,13 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    @blog = Blog.find(params[:id])
+  end
+
+  def update
+    @blog = Blog.find(params[:id])
+    @blog.update(params[:blog].symbolize_keys)
+    render action: :show
   end
 
   def create
