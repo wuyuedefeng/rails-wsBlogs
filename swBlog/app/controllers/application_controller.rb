@@ -47,10 +47,18 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
 
-    private
-      def is_login
+    def is_login
+      if current_user.blank?
+        redirect_to login_in_user_sessions_path
+      end
+    end
+
+    def is_admin
         if current_user.blank?
           redirect_to login_in_user_sessions_path
+        elsif current_user.is_admin == false
+          redirect_to root_path
         end
       end
+      
 end

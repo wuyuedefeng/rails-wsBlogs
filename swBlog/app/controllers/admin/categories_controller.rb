@@ -1,4 +1,5 @@
 class Admin::CategoriesController < ApplicationController
+  before_action :is_admin
   def index
   	@categories = Category.all.order("created_at desc").page(params[:page])
   end
