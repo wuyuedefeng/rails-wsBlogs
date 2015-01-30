@@ -21,6 +21,7 @@
 #  last_login_ip       :string(30)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  is_admin            :boolean          default("0"), not null
 #
 
 require 'test_helper'

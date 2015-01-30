@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150124103145) do
+ActiveRecord::Schema.define(version: 20150130011500) do
 
   create_table "blogs", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 20150124103145) do
   create_table "user_categories", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
     t.integer  "category_id", limit: 4
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   add_index "user_categories", ["category_id"], name: "index_user_categories_on_category_id", using: :btree
@@ -87,23 +87,24 @@ ActiveRecord::Schema.define(version: 20150124103145) do
 
   create_table "users", force: :cascade do |t|
     t.string   "nickname",            limit: 30
-    t.integer  "account_state",       limit: 4,   default: 0, null: false
-    t.string   "login",               limit: 35,              null: false
-    t.string   "email",               limit: 50,              null: false
-    t.string   "crypted_password",    limit: 150,             null: false
-    t.string   "password_salt",       limit: 50,              null: false
-    t.string   "persistence_token",   limit: 150,             null: false
-    t.string   "single_access_token", limit: 50,              null: false
-    t.string   "perishable_token",    limit: 50,              null: false
-    t.integer  "login_count",         limit: 4,   default: 0, null: false
-    t.integer  "failed_login_count",  limit: 4,   default: 0, null: false
+    t.integer  "account_state",       limit: 4,   default: 0,     null: false
+    t.string   "login",               limit: 35,                  null: false
+    t.string   "email",               limit: 50,                  null: false
+    t.string   "crypted_password",    limit: 150,                 null: false
+    t.string   "password_salt",       limit: 50,                  null: false
+    t.string   "persistence_token",   limit: 150,                 null: false
+    t.string   "single_access_token", limit: 50,                  null: false
+    t.string   "perishable_token",    limit: 50,                  null: false
+    t.integer  "login_count",         limit: 4,   default: 0,     null: false
+    t.integer  "failed_login_count",  limit: 4,   default: 0,     null: false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.string   "current_login_ip",    limit: 30
     t.string   "last_login_ip",       limit: 30
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.boolean  "is_admin",            limit: 1,   default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
