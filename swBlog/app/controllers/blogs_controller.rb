@@ -2,17 +2,11 @@ class BlogsController < ApplicationController
   before_action :is_login, except: [:show, :index]
   def index
     if params[:all_blog_search_text].present?
-      query= params[:all_blog_search_text]
-      if params[:all_blog_search_text].split(' ').count > 1
-        query = params[:all_blog_search_text].split(' ').join('%')
-      end
+      query = params[:all_blog_search_text].split("").join('%')
       @blogs = Blog.where("lower(title) LIKE lower(?) or lower(tags) LIKE lower(?)","%#{query}%","%#{query}%")
       .order("created_at desc").page(params[:page])
     elsif params[:my_blog_search_text].present?
-      query = params[:my_blog_search_text]
-      if params[:my_blog_search_text].split(' ').count > 1
-        query = params[:my_blog_search_text].split(' ').join('%')
-      end
+      query = params[:my_blog_search_text].split("").join('%')
       @blogs = Blog.where("user_id = lower(?) and (lower(title) LIKE lower(?) or lower(tags) LIKE ?)",
         current_user.id,"%#{query}%","%#{query}%").order("created_at desc").page(params[:page])
     else
