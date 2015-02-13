@@ -6,22 +6,20 @@
 </style>
 <script type="text/javascript">
 	$(function(){
-    $(".select_this_category").change(function() {
-    	$(this).next().click();
-    });
+    
+	    $(".select_this_category").change(function() {
+	    	$(this).next().click();
+	    });
 
-    $(function() { 
-    	$('#fm').bind( 
-	        'ajax:success', 
-	        function(data, status, xhr) { 
-	            alert('chenggong');
-	        }).bind( 
-	        'ajax:error', 
-	        function(xhr, status, error) { 
-            alert(error); 
-        }); 
+	    <% if flash[:notice] %>
+	    	// alert('abc');
+	    	<% else %>
+	    	// alert('def');
+	    <% end %>
 }); 
-}); 
+function sel(){
+	
+}
 </script>
 
 <div style ="height:50px">

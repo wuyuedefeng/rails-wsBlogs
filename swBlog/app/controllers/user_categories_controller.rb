@@ -8,10 +8,12 @@ class UserCategoriesController < ApplicationController
   def update
   	user_category = UserCategory.where("user_id = ? and category_id = ?", current_user.id, params[:id]).first
     category = Category.find(params[:id])
+
     if user_category.present?
         user_category.destroy
         category.add_this_user_count -= 1
         category.save
+        flash[:notice] = 1
   	else
   	 	user_category = UserCategory.new
   	 	user_category.user_id = current_user.id
@@ -19,8 +21,9 @@ class UserCategoriesController < ApplicationController
       category.add_this_user_count += 1
       category.save
   	 	user_category.save
+       flash[:notice] = -1
   	end 
-  	 render text: "success"
+  	redirect_to action: :index 
   end
 
 end
