@@ -1,7 +1,16 @@
 <style type="text/css">
-  
-
+	.submit_change_category
+	{
+		display: none;
+	}
 </style>
+<script type="text/javascript">
+	$(function(){
+    $(".select_this_category").change(function() {
+    	$(this).next().click();
+    });
+}); 
+</script>
 
 <div style ="height:50px">
 	<div style = "height: 0px; padding: 0px;text-align:center">
@@ -24,7 +33,6 @@
 <table class="table table-bordered table-hover valign">
   <thead>
       <tr>
-      	<th>ID</th>
         <th>名称</th>
         <th>操作</th>
       </tr>
@@ -32,13 +40,11 @@
   <tbody>
       <% @categories.each_with_index do |category,index| %>
 	      <tr>
-	      	<td><%= category.id %></td>
 	        <td><%= category.name %></td>
 	        <td>
-	        	<% if (@user_category_category_ids.present?) && @user_category_category_ids.include?(category.id) %>
-	        		<%= link_to '点击取消',user_category_path(category[:id]), method: :put%>
-	        	<% else %>
-	        		<%= link_to '点击选中', user_category_path(category[:id]),method: :put %>
+	        	<%= form_tag(user_category_path(category[:id]), method: "put" ) do |f| %>
+	        		<%= check_box_tag "category[]",category.id, (@user_category_category_ids.present?) && @user_category_category_ids.include?(category.id), class: "select_this_category" %>
+	        		 <%= submit_tag '提交',class: "submit_change_category" %>
 	        	<% end %>
 	        </td>
 	     </tr>
