@@ -10,9 +10,7 @@
     	$(this).next().click();
     });
     $(function(){
-    	if (text) {
-    		alert(text);
-    	};
+    	alert(text)
     });
 }); 
 </script>
@@ -49,7 +47,7 @@
 	        <td>
 	        	<%= form_tag(user_category_path(category[:id]), method: "put", remote:true) do |f| %>
 	        		<%= check_box_tag "category[]",category.id, (@user_category_category_ids.present?) && @user_category_category_ids.include?(category.id), class: "select_this_category" %>
-	        		 <%= submit_tag '提交', remote: true,class: "submit_change_category" %>
+	        		 <%= submit_tag '提交',class: "submit_change_category" %>
 	        	<% end %>
 	        </td>
 	     </tr>
