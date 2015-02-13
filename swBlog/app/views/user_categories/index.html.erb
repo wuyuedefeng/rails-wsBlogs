@@ -9,9 +9,18 @@
     $(".select_this_category").change(function() {
     	$(this).next().click();
     });
-    $(function(){
-    	alert(text)
-    });
+
+    $(function() { 
+    	$('#fm').bind( 
+	        'ajax:success', 
+	        function(data, status, xhr) { 
+	            alert('chenggong');
+	        }).bind( 
+	        'ajax:error', 
+	        function(xhr, status, error) { 
+            alert(error); 
+        }); 
+}); 
 }); 
 </script>
 
@@ -22,7 +31,7 @@
 
 	<div style= "float: right">
 	    <div style = "float: right">
-	      <form action= "<%= user_categories_path %>" class="navbar-form navbar-right" role="search">
+	      <form action= "<%= user_categories_path %>" class="navbar-form navbar-right" role="search" id="form" >
 	        <div class="form-group">
 	          <input type="text" class="form-control" placeholder= "语言搜索" value = "<%= params[:category_search_text] %>" name="category_search_text">
 	        </div>
@@ -45,7 +54,7 @@
 	      <tr>
 	        <td><%= category.name %></td>
 	        <td>
-	        	<%= form_tag(user_category_path(category[:id]), method: "put", remote:true) do |f| %>
+	        	<%= form_tag(user_category_path(category[:id]), method: "patch", remote:true, id:"fm") do |f| %>
 	        		<%= check_box_tag "category[]",category.id, (@user_category_category_ids.present?) && @user_category_category_ids.include?(category.id), class: "select_this_category" %>
 	        		 <%= submit_tag '提交',class: "submit_change_category" %>
 	        	<% end %>
