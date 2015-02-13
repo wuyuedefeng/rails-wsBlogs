@@ -20,7 +20,7 @@ class UserCategoriesController < ApplicationController
       category.save
   	 	user_category.save
   	end 
-  	 redirect_to action: :index
+  	 render text: "success"
   end
 
 end
