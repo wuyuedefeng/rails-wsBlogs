@@ -2,11 +2,11 @@ class BlogsController < ApplicationController
   before_action :is_login, except: [:show, :index]
   def index
     if params[:all_blog_search_text].present?
-      query = params[:all_blog_search_text].split("").join('%')
+      query = blog_research_works_decorate params[:all_blog_search_text]
       @blogs = Blog.where("lower(title) LIKE lower(?) or lower(tags) LIKE lower(?)","%#{query}%","%#{query}%")
       .order("created_at desc").page(params[:page])
     elsif params[:my_blog_search_text].present?
-      query = params[:my_blog_search_text].split("").join('%')
+      query = blog_research_works_decorate params[:my_blog_search_text]
       @blogs = Blog.where("user_id = lower(?) and (lower(title) LIKE lower(?) or lower(tags) LIKE ?)",
         current_user.id,"%#{query}%","%#{query}%").order("created_at desc").page(params[:page])
     else
@@ -55,4 +55,25 @@ class BlogsController < ApplicationController
     def blog_params
       params.require(:blog).permit(:title, :tags, :body, :category_id)
     end
+
+  def blog_research_works_decorate search_words
+    search_keys_tmp = search_words.squeeze(' ').split("")
+    search_keys = []
+    search_keys_tmp.each_with_index do |key,index|
+      search_keys.push(key)
+      if !((key >="a" && key <="z") || (key >="A" && key <="Z"))
+        search_keys.push("%")
+      else
+        if(index == search_keys_tmp.size - 1)
+          search_keys.push("%")
+        else
+          if(search_keys_tmp[index+1] >="a" && search_keys_tmp[index+1] <="z") || (search_keys_tmp[index+1] >="A" && search_keys_tmp[index+1] <="Z")
+            next
+          end
+        end
+      end
+
+    end
+    search_keys.join()
+  end
 end
