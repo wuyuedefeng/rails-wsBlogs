@@ -33,7 +33,7 @@
 	<p>Find me in app/views/blogs/edit.html.erb</p>
 </div>
 <div class="blog_body" data-no-turbolink>
-		<%= form_for(@blog, url: blog_path(@blog, page:params[:page]), method: "put" )  do |f| %>
+		<%= form_for(@blog, url: user_blog_path(@blog, page:params[:page]), method: "put" )  do |f| %>
 			<div class="blog_body_new" data-no-turbolink>
 				<div class="blog_body_add_title">
 					<li>  

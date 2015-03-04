@@ -27,11 +27,11 @@ Rails.application.routes.draw do
 
   resources :categories
   
-  resources :blogs
+  resources :blogs, :only => [:index, :show]
 
   resources :user_categories
 
-  resources :user_blogs, :only => [:update]
+  resources :user_blogs
 
   
 
