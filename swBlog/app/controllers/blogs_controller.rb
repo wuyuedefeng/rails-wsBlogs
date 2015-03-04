@@ -1,18 +1,23 @@
 class BlogsController < ApplicationController
   before_action :is_login, except: [:show, :index]
   def index
-    if params[:all_blog_search_text].present?
-      query = blog_research_works_decorate params[:all_blog_search_text]
-      @blogs = Blog.where("lower(title) LIKE lower(?) or lower(tags) LIKE lower(?)","%#{query}%","%#{query}%")
-      .order("created_at desc").page(params[:page])
-    elsif params[:my_blog_search_text].present?
+    if params[:my_blog_search_text].blank?
+      if params[:all_blog_search_text].present?
+        query = blog_research_works_decorate params[:all_blog_search_text]
+        @blogs = Blog.where("lower(title) LIKE lower(?) or lower(tags) LIKE lower(?)","%#{query}%","%#{query}%")
+        .order("created_at desc").page(params[:page])
+      else
+        if current_user
+          @blogs = current_user.blogs.order("created_at desc").page(params[:page])
+        else
+          @blogs = Blog.all.order("created_at desc").page(params[:page])
+        end
+      end
+    else
       query = blog_research_works_decorate params[:my_blog_search_text]
       @blogs = Blog.where("user_id = lower(?) and (lower(title) LIKE lower(?) or lower(tags) LIKE ?)",
         current_user.id,"%#{query}%","%#{query}%").order("created_at desc").page(params[:page])
-    else
-      @blogs = current_user.blogs.order("created_at desc").page(params[:page])
     end
-    
   end
 
   def new
