@@ -31,7 +31,11 @@ Rails.application.routes.draw do
 
   resources :user_categories
 
-  resources :user_blogs
+  resources :user_blogs do
+    member do
+      put "update_like"
+    end
+  end
 
   
 

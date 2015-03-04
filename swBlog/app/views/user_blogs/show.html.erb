@@ -24,11 +24,11 @@
 <div class="category_evaluate_div">
 	<div class="category_div"><span>分享者： <span style="color:orange"><%= @blog.user.login_in_nickname_or_others %></span></span></div>
 	<div class="evaluate_div">
-		<%= form_for(@blog,url: user_blog_path(@blog),method: 'put')  do |f| %>
+		<%= form_for(@blog,url: update_like_user_blog_path(@blog),method: 'put')  do |f| %>
 			<%= hidden_field_tag(:is_like, "1") %>
 			<%= f.submit "赞#{@is_like_count}" %>
 		<% end %>
-		<%= form_for(@blog,url: user_blog_path(@blog),method: 'put')  do |f| %>
+		<%= form_for(@blog,url: update_like_user_blog_path(@blog),method: 'put')  do |f| %>
 			<%= hidden_field_tag(:is_like, "-1") %>
 			<%= f.submit "踩#{@is_dislike_count}" %>
 		<% end %>

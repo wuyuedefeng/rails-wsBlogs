@@ -61,7 +61,7 @@
 		<% @blogs.each do |blog|  %>
 			<div class="blog_body_digest">
 				<div class="blog_title">
-					<div><%= link_to blog.title,blog_path(blog) %><sup style="color:orange;">----<%= blog.category.name %></sup>
+					<div><%= link_to blog.title,user_blog_path(blog) %><sup style="color:orange;">----<%= blog.category.name %></sup>
 					</div>
 				</div>
 				<div class="blog_tags"><span style="color:gray">tags:<%= blog.tags %></span></div>

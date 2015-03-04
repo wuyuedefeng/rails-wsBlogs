@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @user_blog_count = Blog.count(:conditons => {:user_id => current_user.id})
+    @user_blog_count = Blog.where(:user_id => current_user.id).count
   end
 
   def show

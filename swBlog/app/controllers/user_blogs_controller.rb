@@ -22,7 +22,19 @@ class UserBlogsController < ApplicationController
     @blog = Blog.find(params[:id])
   end
 
+  def show
+    @blog = Blog.find(params[:id])
+    @is_like_count = UserBlog.where(:blog_id => @blog.id, :is_like => true).count
+    @is_dislike_count = UserBlog.where(:blog_id => @blog.id, :is_dislike => true).count
+  end
+
   def update
+    @blog = Blog.find(params[:id])
+    @blog.update(params[:blog].symbolize_keys)
+    render action: :show
+  end
+
+  def update_like
   	if current_user
   		user_blog = UserBlog.where(:user_id => current_user.id, :blog_id => params[:id] ).first_or_create
   		if params[:is_like] == "1"
@@ -34,7 +46,7 @@ class UserBlogsController < ApplicationController
   		end
   		user_blog.save
   	end
-  	redirect_to blog_path(id: params[:id])
+  	redirect_to user_blog_path(id: params[:id])
   end
 
   def create
