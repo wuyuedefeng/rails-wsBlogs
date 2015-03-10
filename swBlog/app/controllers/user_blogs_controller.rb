@@ -1,5 +1,5 @@
 class UserBlogsController < ApplicationController
-  before_action :is_login
+  before_action :is_login, except: [:show]
   def index
     if params[:my_blog_search_text].blank?
       @blogs = current_user.blogs.order("created_at desc").page(params[:page])
